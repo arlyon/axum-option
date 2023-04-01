@@ -1,0 +1,44 @@
+[package]
+authors = [
+  "Alexander Lyon <arlyon@me.com>",
+]
+description = "Valid-or-missing extractor for Axum"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+name = "axum-option"
+readme = "README.md"
+version = "0.1.0"
+
+[features]
+headers = ["axum/headers"]
+
+[dependencies]
+axum = "0.6.12"
+axum-extra = {version = "0.7.2", optional = true}
+jwt-authorizer = {version = "0.8.1", optional = true}
+prost = "0.11.8"
+serde = "1.0.158"
+
+[dev-dependencies]
+axum-debug = "0.3.3"
+axum-macros = "0.3.7"
+jwt-authorizer = "0.8.1"
+serde = {version = "1", features = ["derive"]}
+tokio = {version = "1.26.0", features = ["rt", "macros"]}
+
+[patch.crates-io]
+jwt-authorizer = {git = "https://github.com/arlyon/jwt-authorizer.git", branch = "feat/auto_reject"}
+
+[[example]]
+name = "headers"
+required-features = ["headers"]
+
+[[example]]
+name = "jwt-authorizer"
+required-features = ["jwt-authorizer"]
+
+[[example]]
+name = "query"
+
+[[example]]
+name = "path"
